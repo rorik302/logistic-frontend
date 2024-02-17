@@ -30,3 +30,5 @@ coverage
 *.tsbuildinfo
 
 certs/*.pem
+.env
+.eslintcache
