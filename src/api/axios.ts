@@ -36,8 +36,9 @@ fetcher.interceptors.response.use(
   (response) => response,
   (error: AxiosError) => {
     const { response, config } = error
+    const retryExclude = ["/api/v1/auth/login"]
 
-    if (response && response.status === 401 && config) {
+    if (response && response.status === 401 && config && !retryExclude.includes(config.url!)) {
       const originalRequest = config!
       const authStore = useAuth()
 
